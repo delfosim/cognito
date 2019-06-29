@@ -1,6 +1,3 @@
-# Delfos IM API Cognito
-
-```go
 package main
 
 import (
@@ -27,17 +24,15 @@ func main() {
 
 	result, err := auth.Validate(tokenString)
 	if err != nil {
-		log.Println(err)
+		log.Println("RESULT", err)
 		os.Exit(1)
 	}
 
 	jsonString, err := json.Marshal(result)
 	if err != nil {
-		log.Println(err)
+		log.Println("JSON", err)
 		os.Exit(1)
 	}
 
 	log.Println(string(jsonString))
 }
-
-```
