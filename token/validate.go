@@ -43,9 +43,9 @@ func NewAuth(AWSRegion, AWSCognitoUserPoolID string) (*Auth, error) {
 }
 
 // Validate Validate
-func (a *Auth) Validate(tokenString string) (map[string]interface{}, error) {
+func (a *Auth) Validate(tokenString string, index int) (map[string]interface{}, error) {
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-		key, errKey := convertKey(jwk.Keys[1].E, jwk.Keys[1].N)
+		key, errKey := convertKey(jwk.Keys[index].E, jwk.Keys[index].N)
 		if errKey != nil {
 			return nil, errKey
 		}
